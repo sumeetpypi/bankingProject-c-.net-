@@ -1,0 +1,447 @@
+﻿.<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head runat="server"><title></title><asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+   <style>
+       @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a,
+#cssmenu #menu-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+        #cssmenu:after,
+#cssmenu>ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#cssmenu #menu-button {
+  display: none;
+}
+#cssmenu {
+  font-family: Montserrat, sans-serif;
+  background: crimson;
+  border-radius: 8px;
+}
+#cssmenu>ul>li {
+  float: left;
+}
+#cssmenu>ul>li>a {
+  padding: 17px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #dddddd;
+  font-weight: 700;
+  text-transform: uppercase;
+  -webkit-transition: color .25s ease;
+  -moz-transition: color .25s ease;
+  transition: color .25s ease;
+}
+#cssmenu>ul>li:hover>a {
+  color: black;
+} 
+#cssmenu>ul>li.has-sub>a {
+  padding-right: 30px;
+}
+#cssmenu ul>li.has-sub>a:after {
+  position: absolute;
+  top: 22px;
+  right: 11px;
+  width: 8px;
+  height: 2px;
+  display: block;
+  background: #dddddd;
+  content: '';
+  -webkit-transition: background .25s ease;
+  -moz-transition: background .25s ease;
+  transition: background .25s ease;
+}
+ #cssmenu>ul>li.has-sub:hover>a:after,
+#cssmenu>ul>li.has-sub>a:hover:after {
+  background: #ffffff;
+}
+#cssmenu ul>li.has-sub>a:before {
+  position: absolute;
+  top: 19px;
+  right: 14px;
+  display: block;
+  width: 2px;
+  height: 8px;
+  background: #dddddd;
+  content: '';
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+#cssmenu ul>li.has-sub:hover>a:before,
+#cssmenu ul>li.has-sub>a:hover:before {
+  top: 23px;
+  height: 0;
+} 
+        #cssmenu ul ul {
+  position: absolute;
+  left: -9999px;
+}
+        #cssmenu li:hover>ul {
+  left: auto;
+}
+ #cssmenu ul ul ul {
+  margin-left: 100%;
+  top: 0;
+}       
+#cssmenu ul ul li {
+  height: 0;
+  -webkit-transition: height .25s ease;
+  -moz-transition: height .25s ease;
+  transition: height .25s ease;
+}
+
+#cssmenu li:hover>ul>li {
+  height: 35px;
+}
+        #cssmenu ul ul li a {
+  width: 170px;
+  padding: 11px 15px;
+  border-bottom: 1px solid rgba(150, 150, 150, 0.15);
+  font-size: 12px;
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+  background: cornsilk;
+}
+ #cssmenu ul ul li:last-child>a,
+#cssmenu ul ul li.last-item>a {
+  border-bottom: 0;
+}
+
+#cssmenu ul ul li:hover>a,
+#cssmenu ul ul li a:hover {
+  color: black;
+}
+        #cssmenu ul ul li.has-sub>a:after {
+  top: 16px;
+  right: 11px;
+  background: #dddddd;
+}
+
+#cssmenu ul ul>li.has-sub:hover>a:after,
+#cssmenu ul ul>li.has-sub>a:hover:after {
+  background: #ffffff;
+}
+
+#cssmenu ul ul li.has-sub>a:before {
+  top: 13px;
+  right: 14px;
+  background: #dddddd;
+}
+
+#cssmenu ul ul>li.has-sub:hover>a:before {
+  top: 17px;
+  height: 0;
+}
+#cssmenu.small-screen {
+  width: 100%;
+}
+
+#cssmenu.small-screen ul {
+  width: 100%;
+  display: none;
+}
+
+#cssmenu.small-screen ul li {
+  width: 100%;
+  border-top: 1px solid rgba(120, 120, 120, 0.2);
+}
+
+#cssmenu.small-screen ul ul li,
+#cssmenu.small-screen li:hover>ul>li {
+  height: auto;
+}
+
+#cssmenu.small-screen ul li a,
+#cssmenu.small-screen ul ul li a {
+  width: 100%;
+  border-bottom: 0;
+}
+
+#cssmenu.small-screen>ul>li {
+  float: none;
+}
+
+#cssmenu.small-screen ul ul,
+#cssmenu.small-screen ul ul ul {
+  position: relative;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+#cssmenu.small-screen ul ul li a {
+  padding-left: 25px;
+}
+
+#cssmenu.small-screen ul ul ul li a {
+  padding-left: 35px;
+}
+
+#cssmenu.small-screen>ul>li.has-sub>a:after,
+#cssmenu.small-screen>ul>li.has-sub>a:before,
+#cssmenu.small-screen ul ul>li.has-sub>a:after,
+#cssmenu.small-screen ul ul>li.has-sub>a:before {
+  display: none;
+}
+#cssmenu.small-screen #menu-button {
+  display: block;
+  padding: 17px;
+  color: #dddddd;
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+#cssmenu.small-screen #menu-button:after {
+  position: absolute;
+  top: 22px;
+  right: 17px;
+  display: block;
+  height: 4px;
+  width: 20px;
+  border-top: 2px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
+  content: '';
+}
+
+#cssmenu.small-screen #menu-button:before {
+  position: absolute;
+  top: 16px;
+  right: 17px;
+  display: block;
+  height: 2px;
+  width: 20px;
+  background: #dddddd;
+  content: '';
+}
+#cssmenu.small-screen #menu-button.menu-opened:after {
+  top: 23px;
+  border: 0;
+  height: 2px;
+  width: 15px;
+  background: #ffffff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#cssmenu.small-screen #menu-button.menu-opened:before {
+  top: 23px;
+  background: #ffffff;
+  width: 15px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}   
+#cssmenu.small-screen .submenu-button {
+  position: absolute;
+  z-index: 99;
+  right: 0;
+  top: 0;
+  display: block;
+  border-left: 1px solid rgba(120, 120, 120, 0.2);
+  height: 46px;
+  width: 46px;
+  cursor: pointer;
+}
+
+#cssmenu.small-screen ul ul .submenu-button {
+  height: 34px;
+  width: 34px;
+}
+#cssmenu.small-screen .submenu-button.submenu-opened {
+  background: #262626;
+}
+#cssmenu.small-screen .submenu-button:after {
+  position: absolute;
+  top: 22px;
+  right: 19px;
+  width: 8px;
+  height: 2px;
+  display: block;
+  background: #dddddd;
+  content: '';
+}
+
+#cssmenu.small-screen ul ul .submenu-button:after {
+  top: 15px;
+  right: 13px;
+}
+
+#cssmenu.small-screen .submenu-button.submenu-opened:after {
+  background: #ffffff;
+}
+
+#cssmenu.small-screen .submenu-button:before {
+  position: absolute;
+  top: 19px;
+  right: 22px;
+  display: block;
+  width: 2px;
+  height: 8px;
+  background: #dddddd;
+  content: '';
+}
+
+#cssmenu.small-screen ul ul .submenu-button:before {
+  top: 12px;
+  right: 16px;
+}
+
+#cssmenu.small-screen .submenu-button.submenu-opened:before {
+  display: none;
+}        
+       .rtf{
+           margin-top:150px;
+           margin:5px;
+           margin-right:5px;
+       }
+
+       #footer {
+    width: 100%;
+    height: 80px;
+    background-color: #ff6a00;
+    border-top-left-radius:20px;
+     border-top-right-radius:20px;
+}
+       #sde-23{
+           font-size:0.9em;
+           text-decoration:none;
+           padding:5px;
+           margin:0 0 8px;
+           margin-top:10px;
+           color:#ffffff;
+       }
+       #top-23 {
+           font-size: 0.9em;
+           text-decoration: none;
+           text-align:center;
+           padding:7px;
+           margin:5px;
+           margin-right:80px;
+           color: #ffffff;
+           float:left;
+       }
+       .Top-nav{
+           background-color:#19388e;
+           width:100%;
+           height:40px;
+       }
+        .tabs{
+            margin-top:20px;
+        }
+       </style>
+    <link href="Css/StyleSheet.css" rel="stylesheet" />
+    <link href="Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Css/bootstrap.css" rel="stylesheet" />
+  
+    <script src="Scripts/bootstrap-datetimepicker.js">
+
+    </script>
+    <script src="Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/moment.min.js"></script>
+    <script src="Scripts/moment.js"></script>
+    <script src="Scripts/moment-with-locales.min.js"></script>
+    <script src="Scripts/moment-with-locales.js"></script>
+   
+    <script src="Scripts/jquery-1.9.0.min.js"></script>
+    <script src="Scripts/jquery-1.9.0.js"></script>
+    <script src="Scripts/jquery-1.9.0.intellisense.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="npm.js"></script>
+
+</head>
+  
+    <body>
+    <div class="Top-nav">
+       
+            <div style="float:right" id="top-23"><asp:image runat="server" ImageUrl="~/Images/telephone-handset-icon.png"></asp:image>&nbsp;&nbsp;<asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Contactus.aspx">Contact Us</asp:HyperLink></div>
+       
+    </div>
+    <hr />
+<div class ="container">
+     <form id="form1" runat="server">
+
+    
+   
+                 <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Default.aspx"><asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Images/Internet BankingHaus (2).png" Width="300px" /></asp:HyperLink>
+      <div class="rtf" style="float:right">
+          <asp:Image ID="Image2" runat="server" Width="40px" Height="30px" ImageUrl="~/Images/gmai.jpg" /></div>
+      <div class="rtf" style="float:right"><asp:Image ID="Image3" runat="server" Width="40px" Height="30px" ImageUrl="~/Images/youtube.jpg" /></div>
+     <div  class="rtf" style="float:right"><asp:Image ID="Image4" runat="server" Width="40px" Height="30px" ImageUrl="~/Images/Twitter.jpg" /></div>
+     <div class="rtf" style="float:right"><asp:Image ID="Image5" runat="server" ImageUrl="~/Images/facebook.jpg" Width="40px" Height="30px" /></div>
+     <hr />
+         
+ <ul>
+  
+  <li>
+      <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Creditcard.aspx">Credit Cards</asp:HyperLink></li>
+  <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Mortages/Mortages.aspx">Mortgages</asp:HyperLink></li>
+  <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/loans/Loans.aspx">Loans</asp:HyperLink></li>
+  <li>
+      <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Apply.aspx">Apply Online</asp:HyperLink></li>
+  <li><asp:HyperLink runat="server" NavigateUrl="~/Prospher/Prospherthrive.aspx">Prosper And Thrive</asp:HyperLink></li>
+  <li style="float:right">
+      <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/UserRegistration.aspx">&#174;  User registration </asp:HyperLink></li>
+           </ul>
+        <hr />
+               
+  
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+ 
+        
+ 
+     
+    </div>
+    
+    <div class="container">
+        <br />
+         <hr />
+        <footer id="footer">
+            <div style="float:left" id="sde-23">&copy Copyright 2017 Developer Sumeet dugg
+            </div>
+      
+          <div style="float:right" id="sde-23">
+||&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink8" runat="server" ForeColor="White" NavigateUrl="~/disclosure/Termsandcondition.aspx">Terms of Service(Terms & Conditions)</asp:HyperLink></div>
+            <div style="float:right" id="sde-23">&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink7" runat="server" ForeColor="White" NavigateUrl="~/disclosure/Disclaimer.aspx">Disclaimer</asp:HyperLink></div>
+            
+          <div style="float:right"  id="sde-23" >
+Site best viewed at 1024 x 768 resolution in I.E 7 or above, Mozilla 3.5 or above, Google Chrome 3 or above, Safari 5.0 +
+          </div>
+            <br />
+            <asp:image runat="server" Height="45px" ImageUrl="~/Images/verisign.gif" Width="121px"></asp:image>
+    </footer>
+        </form>
+    </div>    
+</body>
+</html>

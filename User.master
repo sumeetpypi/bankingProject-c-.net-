@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="User.master.cs" Inherits="User" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Css/bootstrap.css" rel="stylesheet" />
+    <link href="Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Css/StyleSheet.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            font-size: x-large;
+        }
+        
+#nav-12 {
+             width : 100% ;
+             height: 50px;
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+             overflow: hidden;
+             border: 1px solid #e7e#ff6a00 ;
+             background-color: #403ac6;
+             float: left;
+            
+          
+              
+
+              
+   
+     
+         }
+
+#li {
+    float: left;
+}
+
+#li a {
+    display: block;
+    color: rgb(247, 249, 250);
+    text-align: center;
+    font-size : 0.9em ;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#li a:hover:not(.active) {
+    background-color: #ddd;
+     text-decoration: none;
+}
+        .auto-style2 {
+            color: #FF0000;
+        }
+    </style>
+</head>
+    <div class="container">
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Images/Internet BankingHaus (2).png" Width="300px" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="auto-style1"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style2">WELCOME TO YOUR ACCOUNT </span><br />
+        </strong></span>
+        <div style="float:right">
+            <asp:Button ID="Button1" runat="server" Text="LOGOUT" CssClass="btn btn-primary btn-xs" OnClick="Button1_Click" />
+        </div>
+        <br />
+        <hr />
+       
+        <nav-12 id="nav-12">
+           
+            <li id="li" style="float:right"><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/RegisterFor.aspx"> E-Statement</asp:HyperLink></li>
+            <li id="li" style="float:right"><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Fundtransfer.aspx">Fund Transfers </asp:HyperLink></li>
+            <li id="li" style="float:right"><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Accounts.aspx">Accounts </asp:HyperLink></li>
+            
+        </nav-12>
+        <hr />
+        </br>
+
+
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+         </asp:ContentPlaceHolder>
+        <br />
+    </div>
+    </form>
+</body>
+        </div>
+</html>
